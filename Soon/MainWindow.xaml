@@ -1,0 +1,225 @@
+﻿<Window x:Class="Soon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Soon"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Closed="AppWindow_Closed"
+        WindowStartupLocation="CenterScreen"
+        Title="Soon" Height="600" Width="900">
+    <Grid>
+        
+        
+        
+        
+        
+        
+        <!--#region آیتم های نمایشی-->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Name="Holder" Grid.Row="0" Orientation="Vertical">
+
+            </StackPanel>
+        </ScrollViewer>
+        <!--#endregion-->
+
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--#region صفحه کنترل-->
+        <Grid Grid.Row="1">
+
+            
+            
+            
+            <!--متغیرهای متنی-->
+            <Grid Grid.Row="0" FlowDirection="RightToLeft">
+
+                <Border Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,10,0" BorderThickness="1" BorderBrush="DarkGray">
+                    <TextBlock Text="نام کامل" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2" Foreground="DarkGray" />
+                </Border>
+                <TextBox ToolTip="نام کامل" Name="txtFullName" Grid.Column="0" BorderThickness="0,0,0,1" Margin="5" Padding="70,0,20,7" Background="Transparent"/>
+
+                <Border Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,10,0" BorderThickness="1" BorderBrush="DarkGray">
+                    <TextBlock Text="رشته" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2" Foreground="DarkGray" />
+                </Border>
+                <TextBox ToolTip="رشته" Name="txtField" Grid.Column="1" BorderThickness="0,0,0,1" Margin="5" Padding="60,0,20,7" Background="Transparent"/>
+                
+                <Border Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,10,0" BorderThickness="1" BorderBrush="DarkGray">
+                    <TextBlock Text="شناسه" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2" Foreground="DarkGray" />
+                </Border>
+                <TextBox ToolTip="شناسه" Name="txtNumberID" Grid.Column="2" BorderThickness="0,0,0,1" Margin="5" Padding="60,0,20,7" Background="Transparent"/>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+
+
+
+
+
+
+            <!--دکمه های کوئری-->
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="64" Grid.Row="1" Orientation="Horizontal">
+                <!--ثبت رکورد جدید-->
+                <Button Name="newRecord" Click="newRecord_Click" Margin="5" BorderThickness="0" Width="100" Height="36" >
+                    <Grid Width="100" Height="36">
+                        <Image Opacity="0.3" Source="/Image/Add_Row_32px.png" Stretch="None" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock Text="ثبت" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Foreground="Gray"  Margin="0,0,30,0"/>
+                    </Grid>
+                </Button>
+                <!--جستجوی رکورد-->
+                <Button Name="Search" Click="Search_Click" Margin="5" BorderThickness="0" Width="100" Height="36">
+                    <Grid Width="100" Height="36">
+                        <Image Opacity="0.3" Source="/Image/Search_More_32px.png" Stretch="None" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBlock Text="جستجو" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Foreground="Gray"  Margin="0,0,30,0"/>
+                    </Grid>
+                </Button>
+                <!--بارگذاری تمام رکورد ها-->
+                <Button Name="reload" Click="reload_Click" Width="48" Height="36" BorderThickness="0">
+                    <Image Source="/Image/Reload_32px.png" Stretch="None"/>
+                </Button>
+            </StackPanel>
+
+            
+            
+            
+
+            
+
+
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region درباره نرم افزار-->
+        <Button Click="details_Click" ToolTip="جزییات برنامه نویسی" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="1" Width="48" Height="48" Background="Transparent" BorderThickness="0" Margin="5" >
+            <Image Source="/Image/Idea_48px.png" Stretch="None" />
+        </Button>
+
+        <Grid Grid.RowSpan="10" Name="details" Visibility="Hidden">
+            <Border Background="Black" Opacity="0.5"/>
+            <Button Background="Transparent" ToolTip="برگشت" Opacity="0.0" Name="exit" Click="exit_Click"/>
+
+            <StackPanel Orientation="Vertical" Width="560" Height="490" Background="WhiteSmoke">
+                <!--Title-->
+                <Grid Height="48" Background="LightSeaGreen" >
+                    <TextBlock Foreground="WhiteSmoke" Text="اطلاعات کمکی پایگاه داده اینجاست" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Semibold" />
+                </Grid>
+                <!--item1-->
+                <Grid Height="48" >
+                    <Border BorderThickness="0" BorderBrush="DarkGray" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center">
+                        <TextBlock Text="نوع پایگاه داده" FontFamily="Segoe UI Semibold" Foreground="Gray" Margin="5" />
+                    </Border>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10,150,10" Text="SQlite" Foreground="DarkGray"/>
+                </Grid>
+                <!--item2-->
+                <Grid Height="48" Background="#FFDADADA">
+                    <Border BorderThickness="0" BorderBrush="DarkGray" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center">
+                        <TextBlock Text="رشته اتصال" FontFamily="Segoe UI Semibold" Foreground="Gray" Margin="5" />
+                    </Border>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10,150,10" Foreground="DarkGray" >
+                        Data Source = DataBase.db; version = 3; New = False; Compress = True;
+                    </TextBlock>
+                </Grid>
+                <!--item3-->
+                <Grid Height="48" >
+                    <Border BorderThickness="0" BorderBrush="DarkGray" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center">
+                        <TextBlock Text="نام جدول" FontFamily="Segoe UI Semibold" Foreground="DarkGray" Margin="5" />
+                    </Border>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10,150,10" Text="[person]" Foreground="DarkGray"/>
+                </Grid>
+                <!--item4-->
+                <Grid Height="48" Background="#FFDADADA" >
+                    <Border Opacity="0.7" ToolTip="همه ی رکوردها" BorderThickness="0" BorderBrush="Gray" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center">
+                        <Image Source="/Image/Reload_32px.png" Margin="0" Stretch="None" />
+                    </Border>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10,150,10" Foreground="Gray">
+                        "Select * from [person]"
+                    </TextBlock>
+                </Grid>
+                <!--item5-->
+                <Grid Height="48" >
+                    <Border Opacity="0.7" ToolTip="ثبت رکورد" BorderThickness="0" BorderBrush="Gray" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center">
+                        <Image Source="/Image/Add_Row_32px.png" Margin="0" Stretch="None" />
+                    </Border>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10,150,10" Foreground="Gray">
+                        "insert into [person] ( FullName, Field, NumberID) values  ('txt1','txt2','txt3')"
+                    </TextBlock>
+                </Grid>
+                <!--item6-->
+                <Grid Height="48" Background="#FFDADADA" >
+                    <Border Opacity="0.7" ToolTip="جستجو" BorderThickness="0" BorderBrush="Gray" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center">
+                        <Image Source="/Image/Search_More_32px.png" Margin="0" Stretch="None" />
+                    </Border>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10,150,10" Foreground="Gray">
+                        "select * from [person] where [FullName] like '%txt1% or [Field] = txt2"
+                    </TextBlock>
+                </Grid>
+                <!--item7-->
+                <Grid Height="48" >
+                    <Border Opacity="0.7" ToolTip="حذف" BorderThickness="0" BorderBrush="Gray" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center">
+                        <Image Source="/Image/Delete_32px.png" Margin="0" Stretch="None" />
+                    </Border>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10,150,10" Foreground="Gray">
+                        "delete from [person] where [Id] = txt1"
+                    </TextBlock>
+                </Grid>
+                <!--item8-->
+                <Grid Height="48" Background="#FFDADADA" >
+                    <Border Opacity="0.7" ToolTip="ویرایش" BorderThickness="0" BorderBrush="Gray" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center">
+                        <Image Source="/Image/Edit_32px.png" Margin="0" Stretch="None" />
+                    </Border>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10,150,10" Foreground="Gray">
+                        "update [person] set [FullName] = txt1, [Field] = txt2 where [Id] = txt3"
+                    </TextBlock>
+                </Grid>
+
+                <StackPanel Opacity="0.5" Orientation="Horizontal" HorizontalAlignment="Center" Height="48" >
+                    <Border CornerRadius="5" BorderThickness="1" BorderBrush="DarkOrange" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center">
+                        <TextBlock FontFamily="Segoe UI Semibold" Foreground="DarkOrange" Margin="5" >
+                            برنامه نویسی
+                        </TextBlock>
+                    </Border>
+                    <Border CornerRadius="5" BorderThickness="1" BorderBrush="DarkOrange" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center">
+                        <TextBlock FontFamily="Segoe UI Semibold" Foreground="DarkOrange" Margin="5" >
+                            پایگاه داده
+                        </TextBlock>
+                    </Border>
+                    <Border CornerRadius="5" BorderThickness="1" BorderBrush="DarkOrange" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center">
+                        <TextBlock FontFamily="Segoe UI Semibold" Foreground="DarkOrange" Margin="5" >
+                            SQLite
+                        </TextBlock>
+                    </Border>
+                    <Image Source="/Image/C_Sharp_Logo_32px.png" Stretch="None"  Margin="5"/>
+
+                    <Image ToolTip="it.health25@gmail.com" Source="/Image/Code_32px_1.png" Stretch="None" Margin="5"/>
+
+                    <TextBlock ToolTip="it.health25@gmail.com" Margin="0" Foreground="Black" FontFamily="Segoe UI Semibold" Text="محمد گنجی نژاد" VerticalAlignment="Center" />
+
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <!--#endregion-->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+    </Grid>
+</Window>
